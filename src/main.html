@@ -1,0 +1,50 @@
+<html>
+    <head> 
+        <title>ESP Web Server</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="data:,"> 
+        <style>html{font-family: Helvetica; display:inline-block; margin: 0px auto; text-align: center;}
+            h1 {color: #0F3376; padding: 2vh;}
+            p{font-size: 1.5rem;}
+            .button{display: inline-block; background-color: #e7bd3b; border: none; border-radius: 4px; color: white; padding: 16px 40px; text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer;}
+            .button2{background-color: #4286f4;}
+            .ontime-div{margin-bottom:20px;}
+            .starttime-div{margin-bottom:20px;}
+        </style>
+    </head>
+
+    <body> 
+        <form>
+            <h1>ESP Irrigation Timer</h1> 
+            <p>current state: <strong>|||gpio_state|||</strong></p>
+
+            <h2>On Time</h2>
+            <div class="ontime-div">
+                <label>minutes</label>
+                <input name="minutes" type="number" placeholder="30">
+            </div>
+            <div class="ontime-div">
+                <label>seconds</label>
+                <input name="seconds" type="number" placeholder="0">
+            </div>
+            <br><br><br>
+            <h2>Start Times</h2>
+            <div class="starttime-div">
+                <label>Time Start 1</label>
+                <input name="timestart1" type="time" placeholder="hh:mm">
+            </div>
+            <div class="starttime-div">
+                <label>Time Start 2</label>
+                <input name="timestart1" type="time" placeholder="hh:mm">
+            </div>
+            <div class="starttime-div">
+                <label>Time Start 3</label>
+                <input name="timestart1" type="time" placeholder="hh:mm">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+<!--        <p><a href="/?led=on"><button class="button">ON</button></a></p> -->
+<!--        <p><a href="/?led=off"><button class="button button2">OFF</button></a></p>-->
+    </body>
+</html>
