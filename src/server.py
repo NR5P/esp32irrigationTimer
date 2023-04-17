@@ -3,6 +3,9 @@ try:
 except:
   import socket
 
+import time
+from IrrigatorModel import Irrigator
+from db import DB
 from machine import Pin
 import network
 import esp
@@ -10,11 +13,13 @@ esp.osdebug(None)
 import gc
 gc.collect()
 
+
 class Server:
   def __init__(self):
+    self.db = DB()
     self.led = Pin(2, Pin.OUT)
     self.ssid = 'taxation_is_theft_2_4'
-    self.password = ''
+    self.password = self.db.getWifiPassword()
     self.station = network.WLAN(network.STA_IF)
     self.station.active(True)
     self.reConnect()
@@ -23,17 +28,25 @@ class Server:
     self.s.listen(5)
 
 
-  def web_page(self):
-    if self.led.value() == 1:
-      gpio_state="ON"
-    else:
-      gpio_state="OFF"
-
+  def _webPage(self, irrigators):
     with open('main.html', 'r') as file:
-      data = file.read().replace('\n', '').replace("|||gpio_state|||",gpio_state)
+      data = file.read().replace('\n', '')
+      data = self._replace_data(data, irrigators)
     return data
 
-  def serve(self):
+  def _replace_data(self, data, irrigators):
+    for i in range(3):
+      if irrigators[i].getCurrentState():
+        data = data.replace("|||start_"+str(i + 1)+"_state|||", "on") 
+      else:
+        data = data.replace("|||start_"+str(i + 1)+"_state|||", "off") 
+      data = data.replace("|||start_"+str(i + 1)+"_time|||", irrigators[i].getTimeString())
+      data = data.replace("|||start_"+str(i + 1)+"_minutes|||", str(irrigators[i].minutesOn))
+      data = data.replace("|||start_"+str(i + 1)+"_seconds|||", str(irrigators[i].secondsOn))
+    return data
+
+
+  def serve(self, irrigators):
     conn, addr = self.s.accept()
     print('Got a connection from %s' % str(addr))
     request = conn.recv(1024)
@@ -47,7 +60,7 @@ class Server:
     if led_off == 6:
       print('LED OFF')
       self.led.value(0)
-    response = self.web_page()
+    response = self._webPage(irrigators)
     conn.send('HTTP/1.1 200 OK\n')
     conn.send('Content-Type: text/html\n')
     conn.send('Connection: close\n\n')

@@ -1,0 +1,30 @@
+{
+    "generalSettings" : {
+        "on" : true,
+        "location" : "garden",
+        "wifiPassword" : ""
+    },
+    "timerSettings" : [
+        {
+            "name" : "timer1",
+            "minutesOn" : 30,
+            "secondsOn" : 30,
+            "startTime" : "12:30",
+            "pinNum" : 1
+        },
+        {
+            "name" : "timer2",
+            "minutesOn" : 20,
+            "secondsOn" : 30,
+            "startTime" : "14:30",
+            "pinNum" : 2
+        },
+        {
+            "name" : "timer3",
+            "minutesOn" : 10,
+            "secondsOn" : 30,
+            "startTime" : "7:00",
+            "pinNum" : 3
+        }
+    ]
+}

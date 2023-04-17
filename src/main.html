@@ -16,30 +16,46 @@
     <body> 
         <form>
             <h1>ESP Irrigation Timer</h1> 
-            <p>current state: <strong>|||gpio_state|||</strong></p>
 
-            <h2>On Time</h2>
-            <div class="ontime-div">
-                <label>minutes</label>
-                <input name="minutes" type="number" placeholder="30">
-            </div>
-            <div class="ontime-div">
-                <label>seconds</label>
-                <input name="seconds" type="number" placeholder="0">
-            </div>
-            <br><br><br>
             <h2>Start Times</h2>
             <div class="starttime-div">
+                <p>current state: <strong>|||start_1_state|||</strong></p>
                 <label>Time Start 1</label>
-                <input name="timestart1" type="time" placeholder="hh:mm">
+                <input name="timestart1" type="time" value="|||start_1_time|||">
+                <div class="ontime-div">
+                    <label>minutes</label>
+                    <input name="minutes1" type="number" value="|||start_1_minutes|||">
+                </div>
+                <div class="ontime-div">
+                    <label>seconds</label>
+                    <input name="seconds1" type="number" value="|||start_1_seconds|||">
+                </div>
             </div>
             <div class="starttime-div">
+                <p>current state: <strong>|||start_2_state|||</strong></p>
                 <label>Time Start 2</label>
-                <input name="timestart1" type="time" placeholder="hh:mm">
+                <input name="timestart2" type="time" value="|||start_2_time|||">
+                <div class="ontime-div">
+                    <label>minutes</label>
+                    <input name="minutes2" type="number" value="|||start_2_minutes|||">
+                </div>
+                <div class="ontime-div">
+                    <label>seconds</label>
+                    <input name="seconds2" type="number" value="|||start_2_seconds|||">
+                </div>
             </div>
             <div class="starttime-div">
+                <p>current state: <strong>|||start_3_state|||</strong></p>
                 <label>Time Start 3</label>
-                <input name="timestart1" type="time" placeholder="hh:mm">
+                <input name="timestart3" type="time" value="|||start_3_time|||">
+                <div class="ontime-div">
+                    <label>minutes</label>
+                    <input name="minutes3" type="number" value="|||start_3_minutes|||">
+                </div>
+                <div class="ontime-div">
+                    <label>seconds</label>
+                    <input name="seconds3" type="number" value="|||start_3_seconds|||">
+                </div>
             </div>
             <button type="submit">Submit</button>
         </form>
