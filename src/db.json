@@ -23,7 +23,7 @@
             "name" : "timer3",
             "minutesOn" : 10,
             "secondsOn" : 30,
-            "startTime" : "7:00",
+            "startTime" : "07:00",
             "pinNum" : 3
         }
     ]

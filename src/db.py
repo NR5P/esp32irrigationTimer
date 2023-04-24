@@ -14,7 +14,8 @@ class DB:
             jsonData = ujson.load(reader)
         for irrigator in jsonData["timerSettings"]:
             irrigators.append(Irrigator(irrigator["name"],irrigator["startTime"],irrigator["secondsOn"],irrigator["minutesOn"], irrigator["pinNum"]))
-        return []
+        print(irrigators)
+        return irrigators
     
     def getState(self):
         with open("db.json") as reader:

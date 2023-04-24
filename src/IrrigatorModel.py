@@ -31,8 +31,18 @@ class Irrigator:
         newTime = time.mktime(tuple(currentTimeList))
         return newTime
 
+    def timeFormat(self,timeStr):
+        hour = timeStr.split(":")[0]   
+        minute = timeStr.split(":")[1]
+        if len(hour) == 1:
+            hour = "0" + hour
+        if len(minute) == 1:
+            minute = "0" + minute
+
+        return hour + ":" + minute
+
     def getTimeString(self):
-        return str(time.gmtime(self.startTime)[3])+":"+str(time.gmtime(self.startTime)[4])
+        return self.timeFormat(str(time.gmtime(self.startTime)[3])+":"+str(time.gmtime(self.startTime)[4]))
 
     """
         takes start time in seconds and run time in minutes and seconds and gets end time in seconds 
