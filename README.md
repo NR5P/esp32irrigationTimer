@@ -15,3 +15,6 @@ type repl to enter repl
 
 # sync files form current dir to the esp32
 rsync . /pyboard
+
+# Write firmware
+esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash -z 0x1000 esp32-20230426-v1.20.0.bin
